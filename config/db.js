@@ -8,7 +8,7 @@ const sequelize = new Sequelize("ecf", "root", "root", {
 // Synchronisation des modèles
 const User = require("../models/User")(sequelize);
 const Task = require("../models/Task")(sequelize);
-
+const Project = require("../models/Project")(sequelize);
 
 
 sequelize
@@ -22,4 +22,5 @@ module.exports = {
   sequelize,
    Task,
    User,
+   Project,
 };

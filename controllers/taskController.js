@@ -54,9 +54,9 @@ exports.deleteTask = async (req, res) => {
 
         const taskId = req.params.id;
 
-        const taskDelete = await Student.findById(taskId);
+        const taskDelete = await Task.findById(taskId);
 
-        await taskDelete.destroy();
+        await taskDelete.destroy({where : { id: req.params.id } });
 
         res.status(200).json({ message: `La tâche à bien été supprimé !` })
     } catch (error) {

@@ -8,7 +8,7 @@ exports.getAllProjects = async (req, res) => {
     } catch (error) {
         res
             .status(500)
-            .json({ message: "Erreur lors de la récupération des tâches" });
+            .json({ message: "Erreur lors de la récupération des projets" });
     }
 };
 
@@ -63,7 +63,7 @@ exports.deleteProject = async (req, res) => {
         res.status(500).json({ message: "Le projet est introuvable ! " })
     }
 };
-task
+
 
 
 

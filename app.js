@@ -2,6 +2,7 @@ const express = require("express");
 const DB = require("./config/db");
 const userRouter = require("./routes/userRouter");
 const taskRouter = require("./routes/taskRouter");
+const projectRouter = require("./routes/projectRouter");
 
 
 const app = express();
@@ -9,6 +10,7 @@ const port = 3000;
 
 app.use(express.json())
 .use("/api/users", userRouter)
+.use("/api/projects", projectRouter )
 .use("/api/tasks", taskRouter )
 
 DB.sequelize
