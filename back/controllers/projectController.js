@@ -14,8 +14,8 @@ exports.getAllProjects = async (req, res) => {
 
 exports.createProject = async (req, res) => {
     try {
-        const {name_project,description} = req.body;
-     await Project.create({name_project,description});
+        const {name_project,description_project} = req.body;
+     await Project.create({name_project,description_project});
         res.status(201).json("Le projet a été créer");
     } catch (error) {
         console.log(error);

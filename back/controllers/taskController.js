@@ -14,8 +14,8 @@ exports.getAllTasks = async (req, res) => {
 
 exports.createTask = async (req, res) => {
     try {
-        const {title,description, priorities,date} = req.body;
-     await Task.create({title,description,priorities,date});
+        const {title_task,description_task, priorities_task,dateLast} = req.body;
+     await Task.create({title_task,description_task,priorities_task,dateLast});
         res.status(201).json("La tâche a été créer");
     } catch (error) {
         console.log(error);
@@ -41,10 +41,10 @@ exports.getTaskById = async (req, res) => {
 
 exports.updateTask = async (req, res) => {
     try {
-        await Task.update({ title,description, priorities,date} = req.body, { where: { id: req.params.id } })
-        const updatedTask = await Task.findOne({ where: { id: req.params.id } })
+        await Task.update({ title_task,description_task, priorities_task,dateLast} = req.body, { where: { id_task: req.params.id } })
+        const updatedTask = await Task.findOne({ where: { id_task: req.params.id } })
         res.status(201).json(updatedTask);
-    } catch (error) {
+    } catch (error) { 
         res.status(500).json({ message: "Tâche introuvable ! " })
     }
 };
@@ -52,11 +52,11 @@ exports.updateTask = async (req, res) => {
 exports.deleteTask = async (req, res) => {
     try {
 
-        const taskId = req.params.id;
+        // const taskId = req.params.id;
 
-        const taskDelete = await Task.findById(taskId);
+        // const taskDelete = await Task.findById(taskId);
 
-        await taskDelete.destroy({where : { id: req.params.id } });
+        await Task.destroy({where :{id_task: req.params.id } });
 
         res.status(200).json({ message: `La tâche à bien été supprimé !` })
     } catch (error) {

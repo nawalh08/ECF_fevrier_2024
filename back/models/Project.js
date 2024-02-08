@@ -1,29 +1,22 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-    const Task = sequelize.define("Task", {
-        id: {
+    const Project = sequelize.define("Project", {
+        id_project: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        title: {
+        name_project: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        description: {
+        description_project: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        priorities: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        date: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        }
+    
     });
 
-    return Task;
+    return Project;
 };

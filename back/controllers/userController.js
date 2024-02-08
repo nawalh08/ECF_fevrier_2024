@@ -17,9 +17,9 @@ exports.getAllUsers = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   try {
-    const { username, password , role } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username: username, password: hashedPassword , role:role });
+    const { username, passwordUser } = req.body;
+    const hashedPassword = await bcrypt.hash(passwordUser, 10);
+    const newUser = new User({ username: username, password: hashedPassword });
     await newUser.save();
     res.status(201).json({ message: "Utilisateur ajouté !" });
   } catch (error) {
@@ -29,12 +29,12 @@ exports.createUser = async (req, res) => {
 
 exports.connectUser = async (req, res) => {
   try {
-    const {username , password} = req.body; 
+    const {username , passwordUser} = req.body; 
     const user = await User.findOne({username});
     if(!user) {
       return res.status(401).json({message:"l'utilisateur ou le mot de passe est incorrect "});
     }
-    const isValid = await bcrypt.compare(password, user.password);
+    const isValid = await bcrypt.compare(password, user.passwordUser);
 
     if (!isValid) {
       return res

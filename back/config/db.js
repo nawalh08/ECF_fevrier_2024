@@ -12,7 +12,7 @@ const Project = require("../models/Project")(sequelize);
 
 
 sequelize
-  .sync({ force: false })
+  .sync({ force: false})
   .then(() => console.log("La base de données à bien été synchronisée"))
   .catch((error) =>
     console.error("Problème lors de la synchronisation :", error.message)
@@ -21,6 +21,6 @@ sequelize
 module.exports = {
   sequelize,
    Task,
-   User,
    Project,
+   User,
 };
